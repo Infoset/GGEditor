@@ -1,5 +1,6 @@
 import G6 from '@antv/g6';
 import merge from 'lodash/merge';
+import omit from 'lodash/omit';
 import isArray from 'lodash/isArray';
 import { ItemState } from '@/common/constants';
 import { GGroup, NodeModel, CustomNode } from '@/common/interfaces';
@@ -43,7 +44,7 @@ const bizNode: CustomNode = {
   },
 
   getOptions(model: NodeModel) {
-    return merge({}, this.options, this.getCustomConfig(model) || {}, model);
+    return merge({}, this.options, this.getCustomConfig(model) || {}, omit(model, 'children'));
   },
 
   draw(model, group) {
