@@ -5,6 +5,8 @@ export default function<CP>(
 ): <P extends CP, T = unknown>(
   WrappedComponent: React.ComponentType<P>,
 ) => React.ForwardRefExoticComponent<
-  React.PropsWithoutRef<Pick<React.PropsWithChildren<P>, Exclude<keyof P, keyof CP> | Exclude<'children', keyof CP>>> &
+  React.PropsWithoutRef<
+    { [P_1 in Exclude<keyof P, keyof CP> | Exclude<'children', keyof CP>]: React.PropsWithChildren<P>[P_1] }
+  > &
     React.RefAttributes<T>
 >;

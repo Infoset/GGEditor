@@ -1,103 +1,92 @@
 import React from 'react';
-import { Graph, FlowData, MindData, GraphReactEventProps } from '../../common/interfaces';
-import { EditorPrivateContextProps } from '../EditorContext';
+import { Graph, FlowData, MindData } from '../../common/interfaces';
 import './behavior';
-interface GraphProps extends Partial<GraphReactEventProps>, EditorPrivateContextProps {
+declare const _default: React.ForwardRefExoticComponent<{
+  onClick?: (e: any) => void;
+  onDoubleClick?: (e: any) => void;
+  onMouseEnter?: (e: any) => void;
+  onMouseMove?: (e: any) => void;
+  onMouseOut?: (e: any) => void;
+  onMouseOver?: (e: any) => void;
+  onMouseLeave?: (e: any) => void;
+  onMouseDown?: (e: any) => void;
+  onMouseUp?: (e: any) => void;
+  onContextMenu?: (e: any) => void;
+  onDragStart?: (e: any) => void;
+  onDrag?: (e: any) => void;
+  onDragEnd?: (e: any) => void;
+  onDragEnter?: (e: any) => void;
+  onDragLeave?: (e: any) => void;
+  onDrop?: (e: any) => void;
+  onKeyDown?: (e: any) => void;
+  onKeyUp?: (e: any) => void;
+  onTouchStart?: (e: any) => void;
+  onTouchMove?: (e: any) => void;
+  onTouchEnd?: (e: any) => void;
+  onNodeClick?: (e: any) => void;
+  onNodeDoubleClick?: (e: any) => void;
+  onNodeMouseEnter?: (e: any) => void;
+  onNodeMouseMove?: (e: any) => void;
+  onNodeMouseOut?: (e: any) => void;
+  onNodeMouseOver?: (e: any) => void;
+  onNodeMouseLeave?: (e: any) => void;
+  onNodeMouseDown?: (e: any) => void;
+  onNodeMouseUp?: (e: any) => void;
+  onNodeContextMenu?: (e: any) => void;
+  onNodeDragStart?: (e: any) => void;
+  onNodeDrag?: (e: any) => void;
+  onNodeDragEnd?: (e: any) => void;
+  onNodeDragEnter?: (e: any) => void;
+  onNodeDragLeave?: (e: any) => void;
+  onNodeDrop?: (e: any) => void;
+  onEdgeClick?: (e: any) => void;
+  onEdgeDoubleClick?: (e: any) => void;
+  onEdgeMouseEnter?: (e: any) => void;
+  onEdgeMouseMove?: (e: any) => void;
+  onEdgeMouseOut?: (e: any) => void;
+  onEdgeMouseOver?: (e: any) => void;
+  onEdgeMouseLeave?: (e: any) => void;
+  onEdgeMouseDown?: (e: any) => void;
+  onEdgeMouseUp?: (e: any) => void;
+  onEdgeContextMenu?: (e: any) => void;
+  onCanvasClick?: (e: any) => void;
+  onCanvasDoubleClick?: (e: any) => void;
+  onCanvasMouseEnter?: (e: any) => void;
+  onCanvasMouseMove?: (e: any) => void;
+  onCanvasMouseOut?: (e: any) => void;
+  onCanvasMouseOver?: (e: any) => void;
+  onCanvasMouseLeave?: (e: any) => void;
+  onCanvasMouseDown?: (e: any) => void;
+  onCanvasMouseUp?: (e: any) => void;
+  onCanvasContextMenu?: (e: any) => void;
+  onCanvasDragStart?: (e: any) => void;
+  onCanvasDrag?: (e: any) => void;
+  onCanvasDragEnd?: (e: any) => void;
+  onCanvasDragEnter?: (e: any) => void;
+  onCanvasDragLeave?: (e: any) => void;
+  onBeforeAddItem?: (e: any) => void;
+  onAfterAddItem?: (e: any) => void;
+  onBeforeRemoveItem?: (e: any) => void;
+  onAfterRemoveItem?: (e: any) => void;
+  onBeforeUpdateItem?: (e: any) => void;
+  onAfterUpdateItem?: (e: any) => void;
+  onBeforeItemVisibilityChange?: (e: any) => void;
+  onAfterItemVisibilityChange?: (e: any) => void;
+  onBeforeItemStateChange?: (e: any) => void;
+  onAfterItemStateChange?: (e: any) => void;
+  onBeforeRefreshItem?: (e: any) => void;
+  onAfterRefreshItem?: (e: any) => void;
+  onBeforeItemStatesClear?: (e: any) => void;
+  onAfterItemStatesClear?: (e: any) => void;
+  onBeforeLayout?: (e: any) => void;
+  onAfterLayout?: (e: any) => void;
+  onAfterConnect?: (e: any) => void;
   style?: React.CSSProperties;
   className?: string;
   containerId: string;
   data: FlowData | MindData;
-  parseData(data: object): void;
-  initGraph(width: number, height: number): Graph;
-}
-declare const _default: React.ForwardRefExoticComponent<Pick<
-  React.PropsWithChildren<GraphProps>,
-  | 'onClick'
-  | 'onDoubleClick'
-  | 'onMouseEnter'
-  | 'onMouseMove'
-  | 'onMouseOut'
-  | 'onMouseOver'
-  | 'onMouseLeave'
-  | 'onMouseDown'
-  | 'onMouseUp'
-  | 'onContextMenu'
-  | 'onDragStart'
-  | 'onDrag'
-  | 'onDragEnd'
-  | 'onDragEnter'
-  | 'onDragLeave'
-  | 'onDrop'
-  | 'onKeyDown'
-  | 'onKeyUp'
-  | 'onTouchStart'
-  | 'onTouchMove'
-  | 'onTouchEnd'
-  | 'onNodeClick'
-  | 'onNodeDoubleClick'
-  | 'onNodeMouseEnter'
-  | 'onNodeMouseMove'
-  | 'onNodeMouseOut'
-  | 'onNodeMouseOver'
-  | 'onNodeMouseLeave'
-  | 'onNodeMouseDown'
-  | 'onNodeMouseUp'
-  | 'onNodeContextMenu'
-  | 'onNodeDragStart'
-  | 'onNodeDrag'
-  | 'onNodeDragEnd'
-  | 'onNodeDragEnter'
-  | 'onNodeDragLeave'
-  | 'onNodeDrop'
-  | 'onEdgeClick'
-  | 'onEdgeDoubleClick'
-  | 'onEdgeMouseEnter'
-  | 'onEdgeMouseMove'
-  | 'onEdgeMouseOut'
-  | 'onEdgeMouseOver'
-  | 'onEdgeMouseLeave'
-  | 'onEdgeMouseDown'
-  | 'onEdgeMouseUp'
-  | 'onEdgeContextMenu'
-  | 'onCanvasClick'
-  | 'onCanvasDoubleClick'
-  | 'onCanvasMouseEnter'
-  | 'onCanvasMouseMove'
-  | 'onCanvasMouseOut'
-  | 'onCanvasMouseOver'
-  | 'onCanvasMouseLeave'
-  | 'onCanvasMouseDown'
-  | 'onCanvasMouseUp'
-  | 'onCanvasContextMenu'
-  | 'onCanvasDragStart'
-  | 'onCanvasDrag'
-  | 'onCanvasDragEnd'
-  | 'onCanvasDragEnter'
-  | 'onCanvasDragLeave'
-  | 'onBeforeAddItem'
-  | 'onAfterAddItem'
-  | 'onBeforeRemoveItem'
-  | 'onAfterRemoveItem'
-  | 'onBeforeUpdateItem'
-  | 'onAfterUpdateItem'
-  | 'onBeforeItemVisibilityChange'
-  | 'onAfterItemVisibilityChange'
-  | 'onBeforeItemStateChange'
-  | 'onAfterItemStateChange'
-  | 'onBeforeRefreshItem'
-  | 'onAfterRefreshItem'
-  | 'onBeforeItemStatesClear'
-  | 'onAfterItemStatesClear'
-  | 'onBeforeLayout'
-  | 'onAfterLayout'
-  | 'onAfterConnect'
-  | 'style'
-  | 'className'
-  | 'containerId'
-  | 'data'
-  | 'parseData'
-  | 'initGraph'
-  | 'children'
-> &
-  React.RefAttributes<unknown>>;
+  parseData: (data: object) => void;
+  initGraph: (width: number, height: number) => Graph;
+  children?: React.ReactNode;
+} & React.RefAttributes<unknown>>;
 export default _default;

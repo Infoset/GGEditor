@@ -1,30 +1,32 @@
 import {
-  GraphType,
-  GraphState,
-  LabelState,
   EditorCommand,
-  GraphCommonEvent,
-  GraphNodeEvent,
-  GraphEdgeEvent,
   GraphCanvasEvent,
+  GraphCommonEvent,
   GraphCustomEvent,
+  GraphEdgeEvent,
+  GraphNodeEvent,
+  GraphState,
+  GraphType,
+  LabelState,
 } from '@/common/constants';
 import IGGroup from '@antv/g-canvas/lib/group';
 import { IShape as IGShape } from '@antv/g-canvas/lib/interfaces';
-import { Graph as IGraph, TreeGraph as ITreeGraph } from '@antv/g6';
 import {
-  IPoint,
-  ShapeStyle as IShapeStyle,
-  GraphOptions as IGraphOptions,
-  GraphData as IGraphData,
-  TreeGraphData as ITreeGraphData,
-  NodeConfig as INodeConfig,
-  EdgeConfig as IEdgeConfig,
   BehaviorOption as IBehaviorOption,
+  EdgeConfig as IEdgeConfig,
+  Graph as IGraph,
+  GraphData as IGraphData,
+  GraphOptions as IGraphOptions,
+  IEdge,
   IG6GraphEvent as IGraphEvent,
-} from '@antv/g6/lib/types';
-import { ShapeOptions as IShapeOptions } from '@antv/g6/lib/interface/shape';
-import { INode, IEdge } from '@antv/g6/lib/interface/item';
+  INode,
+  IPoint,
+  NodeConfig as INodeConfig,
+  ShapeOptions as IShapeOptions,
+  ShapeStyle as IShapeStyle,
+  TreeGraph as ITreeGraph,
+  TreeGraphData as ITreeGraphData,
+} from '@antv/g6';
 
 export interface GShape extends IGShape {}
 export interface GGroup extends IGGroup {}

@@ -144,8 +144,7 @@ export function getFlowRecallEdges(graph: Graph, node: Node, targetIds: string[]
   }
 
   inEdges.map(edge => {
-    const sourceId = (edge.getModel() as EdgeModel).source;
-    const sourceNode = graph.findById(sourceId) as Node;
+    const source = edge.getSource();
 
     edges.push(edge);
 
@@ -153,8 +152,8 @@ export function getFlowRecallEdges(graph: Graph, node: Node, targetIds: string[]
 
     targetIds.push(targetId);
 
-    if (!targetIds.includes(sourceId)) {
-      getFlowRecallEdges(graph, sourceNode, targetIds, edges);
+    if (!targetIds.includes(source.getID())) {
+      getFlowRecallEdges(graph, source, targetIds, edges);
     }
   });
 
@@ -170,7 +169,7 @@ export function getMindRecallEdges(graph: TreeGraph, node: Node, edges: Edge[] =
   }
 
   node.getEdges().forEach(edge => {
-    const source = edge.getModel().source as Edge;
+    const source = edge.getSource();
 
     if (source.get('id') === parentNode.get('id')) {
       edges.push(edge);

@@ -3,12 +3,14 @@ module.exports = {
     browser: true,
   },
   parser: '@typescript-eslint/parser',
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:prettier/recommended',
-    'prettier/@typescript-eslint',
-  ],
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: 'module',
+    ecmaFeatures: {
+      modules: true,
+    },
+  },
+  extends: ['plugin:react/recommended', 'plugin:prettier/recommended'],
   plugins: ['@typescript-eslint', 'react', 'prettier'],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 0,

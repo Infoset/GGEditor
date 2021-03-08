@@ -16,7 +16,7 @@ export declare const withEditorContext: <P extends EditorContextProps, T = unkno
   WrappedComponent: React.ComponentType<P>,
 ) => React.ForwardRefExoticComponent<
   React.PropsWithoutRef<
-    Pick<React.PropsWithChildren<P>, 'children' | Exclude<keyof P, 'graph' | 'executeCommand' | 'commandManager'>>
+    { [P_1 in 'children' | Exclude<keyof P, keyof EditorContextProps>]: React.PropsWithChildren<P>[P_1] }
   > &
     React.RefAttributes<T>
 >;
@@ -24,7 +24,7 @@ export declare const withEditorPrivateContext: <P extends EditorPrivateContextPr
   WrappedComponent: React.ComponentType<P>,
 ) => React.ForwardRefExoticComponent<
   React.PropsWithoutRef<
-    Pick<React.PropsWithChildren<P>, 'children' | Exclude<keyof P, 'commandManager' | 'setGraph'>>
+    { [P_1 in 'children' | Exclude<keyof P, keyof EditorPrivateContextProps>]: React.PropsWithChildren<P>[P_1] }
   > &
     React.RefAttributes<T>
 >;

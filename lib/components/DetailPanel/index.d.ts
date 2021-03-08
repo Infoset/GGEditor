@@ -14,11 +14,14 @@ declare class DetailPanel {
     WrappedComponent: React.ComponentType<P>,
   ) => React.ForwardRefExoticComponent<
     React.PropsWithoutRef<
-      Pick<
-        React.PropsWithChildren<EditorContextProps & Pick<P, Exclude<keyof P, 'type' | 'nodes' | 'edges'>>>,
-        | 'children'
-        | Exclude<Exclude<keyof P, 'type' | 'nodes' | 'edges'>, 'graph' | 'executeCommand' | 'commandManager'>
-      >
+      {
+        [P_1 in
+          | 'children'
+          | Exclude<
+              Exclude<keyof P, keyof DetailPanelComponentProps>,
+              keyof EditorContextProps
+            >]: React.PropsWithChildren<EditorContextProps & Omit<P, keyof DetailPanelComponentProps>>[P_1];
+      }
     > &
       React.RefAttributes<unknown>
   >;

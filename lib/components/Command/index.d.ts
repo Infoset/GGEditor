@@ -1,13 +1,8 @@
 import React from 'react';
-import { EditorContextProps } from '../EditorContext';
-interface CommandProps extends EditorContextProps {
+declare const _default: React.ForwardRefExoticComponent<{
   name: string;
   className?: string;
   disabledClassName?: string;
-}
-declare const _default: React.ForwardRefExoticComponent<Pick<
-  React.PropsWithChildren<CommandProps>,
-  'name' | 'className' | 'disabledClassName' | 'children'
-> &
-  React.RefAttributes<unknown>>;
+  children?: React.ReactNode;
+} & React.RefAttributes<unknown>>;
 export default _default;

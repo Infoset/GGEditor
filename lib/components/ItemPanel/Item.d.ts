@@ -9,9 +9,11 @@ export interface ItemProps extends EditorContextProps {
   model: Partial<NodeModel>;
 }
 export interface ItemState {}
-declare const _default: React.ForwardRefExoticComponent<Pick<
-  React.PropsWithChildren<ItemProps>,
-  'children' | 'style' | 'className' | 'type' | 'model'
-> &
-  React.RefAttributes<unknown>>;
+declare const _default: React.ForwardRefExoticComponent<{
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+  className?: string;
+  type?: ItemType;
+  model: Partial<NodeModel>;
+} & React.RefAttributes<unknown>>;
 export default _default;
