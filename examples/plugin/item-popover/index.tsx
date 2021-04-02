@@ -1,6 +1,6 @@
-import React from 'react';
 import { Popover } from 'antd';
 import GGEditor, { Flow, ItemPopover } from 'gg-editor';
+import React from 'react';
 import styles from './index.less';
 
 const data = {

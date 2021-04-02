@@ -1,14 +1,15 @@
-import React from 'react';
-import upperFirst from 'lodash/upperFirst';
-import { Icon, Divider, Tooltip } from 'antd';
-import GGEditor, { Flow, Mind, Command, ContextMenu, constants } from 'gg-editor';
+import { createFromIconfontCN } from '@ant-design/icons';
+import { Divider, Tooltip } from 'antd';
+import GGEditor, { Command, constants, ContextMenu, Flow } from 'gg-editor';
 import { MindData } from 'gg-editor/lib/common/interfaces';
+import upperFirst from 'lodash/upperFirst';
+import React from 'react';
 import styles from './index.less';
 
 const { EditorCommand } = constants;
 
-const IconFont = Icon.createFromIconfontCN({
-  scriptUrl: 'https://at.alicdn.com/t/font_1518433_oa5sw7ezue.js',
+const IconFont = createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js',
 });
 
 const FLOW_COMMAND_LIST = [

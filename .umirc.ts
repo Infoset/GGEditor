@@ -30,12 +30,12 @@ export default defineConfig({
     ],
   },
   exportStatic: {},
-  styles: ['https://g.alicdn.com/code/lib/antd/3.23.6/antd.min.css'],
+  styles: ['https://g.alicdn.com/code/lib/antd/4.14.0/antd.min.css'],
   scripts: [
-    'https://g.alicdn.com/code/lib/react/16.8.6/umd/react.production.min.js',
-    'https://g.alicdn.com/code/lib/react-dom/16.8.6/umd/react-dom.production.min.js',
-    'https://g.alicdn.com/code/lib/moment.js/2.24.0/moment.min.js',
-    'https://g.alicdn.com/code/lib/antd/3.23.6/antd.min.js',
+    'https://g.alicdn.com/code/lib/react/17.0.2/umd/react.production.min.js',
+    'https://g.alicdn.com/code/lib/react-dom/17.0.2/umd/react-dom.production.min.js',
+    'https://g.alicdn.com/code/lib/moment.js/2.25.3/moment.min.js',
+    'https://g.alicdn.com/code/lib/antd/4.14.0/antd.min.js',
   ],
   externals: {
     react: 'React',

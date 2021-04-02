@@ -1,12 +1,9 @@
-import React from 'react';
-import upperFirst from 'lodash/upperFirst';
 import { Card, Form, Input } from 'antd';
-import { FormComponentProps } from 'antd/lib/form';
-import { DetailPanel, withEditorContext } from 'gg-editor';
-import { EditorContextProps } from 'gg-editor/lib/components/EditorContext';
+import { DetailPanel } from 'gg-editor';
 import { DetailPanelComponentProps } from 'gg-editor/lib/components/DetailPanel';
-
-const { Item } = Form;
+import { EditorContextProps } from 'gg-editor/lib/components/EditorContext';
+import upperFirst from 'lodash/upperFirst';
+import React from 'react';
 
 const formItemLayout = {
   labelCol: {
@@ -17,115 +14,83 @@ const formItemLayout = {
   },
 };
 
-interface PanelProps extends FormComponentProps, EditorContextProps, DetailPanelComponentProps {}
+interface PanelProps extends EditorContextProps, DetailPanelComponentProps {}
 
-interface PanelState {}
+const Panel: React.FC<PanelProps> = props => {
+  const [form] = Form.useForm();
 
-class Panel extends React.Component<PanelProps, PanelState> {
-  handleSubmit = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (e && e.preventDefault) {
-      e.preventDefault();
+  const onValuesChange = (values: any) => {
+    const { type, nodes, edges, executeCommand } = props;
+
+    const item = type === 'node' ? nodes[0] : edges[0];
+
+    if (!item) {
+      return;
     }
 
-    const { form } = this.props;
-
-    form.validateFieldsAndScroll((err, values) => {
-      if (err) {
-        return;
-      }
-
-      const { type, nodes, edges, executeCommand } = this.props;
-
-      const item = type === 'node' ? nodes[0] : edges[0];
-
-      if (!item) {
-        return;
-      }
-
-      executeCommand('update', {
-        id: item.get('id'),
-        updateModel: {
-          ...values,
-        },
-      });
+    executeCommand('update', {
+      id: item.get('id'),
+      updateModel: {
+        ...values,
+      },
     });
   };
 
-  renderNodeDetail = () => {
-    const { form } = this.props;
-
-    return (
-      <Form>
-        <Item label="Label" {...formItemLayout}>
-          {form.getFieldDecorator('label', {
-            initialValue: '',
-          })(<Input onBlur={this.handleSubmit} />)}
-        </Item>
-      </Form>
-    );
-  };
-
-  renderEdgeDetail = () => {
-    const { form } = this.props;
-
-    return (
-      <Form>
-        <Item label="Label" {...formItemLayout}>
-          {form.getFieldDecorator('label', {
-            initialValue: '',
-          })(<Input onBlur={this.handleSubmit} />)}
-        </Item>
-      </Form>
-    );
-  };
-
-  renderMultiDetail = () => {
-    return null;
-  };
-
-  renderCanvasDetail = () => {
-    return <p>Select a node or edge :)</p>;
-  };
-
-  render() {
-    const { type } = this.props;
-
-    return (
-      <Card title={upperFirst(type)} bordered={false}>
-        {type === 'node' && this.renderNodeDetail()}
-        {type === 'edge' && this.renderEdgeDetail()}
-        {type === 'multi' && this.renderMultiDetail()}
-        {type === 'canvas' && this.renderCanvasDetail()}
-      </Card>
-    );
-  }
-}
-
-const WrappedPanel = Form.create<PanelProps>({
-  mapPropsToFields(props) {
+  const getInitialLabelValue = () => {
     const { type, nodes, edges } = props;
 
-    let label = '';
-
     if (type === 'node') {
-      label = nodes[0].getModel().label;
+      return nodes[0].getModel().label;
     }
 
     if (type === 'edge') {
-      label = edges[0].getModel().label;
+      return edges[0].getModel().label;
     }
 
-    return {
-      label: Form.createFormField({
-        value: label,
-      }),
-    };
-  },
-})(withEditorContext(Panel));
+    return '';
+  };
 
-type WrappedPanelProps = Omit<PanelProps, keyof FormComponentProps>;
+  const renderNodeDetail = () => {
+    return (
+      <Form form={form} initialValues={{ label: getInitialLabelValue() }} onValuesChange={onValuesChange}>
+        <Form.Item name="label" label="Label">
+          <Input />
+        </Form.Item>
+      </Form>
+    );
+  };
 
-export const NodePanel = DetailPanel.create<WrappedPanelProps>('node')(WrappedPanel);
-export const EdgePanel = DetailPanel.create<WrappedPanelProps>('edge')(WrappedPanel);
-export const MultiPanel = DetailPanel.create<WrappedPanelProps>('multi')(WrappedPanel);
-export const CanvasPanel = DetailPanel.create<WrappedPanelProps>('canvas')(WrappedPanel);
+  const renderEdgeDetail = () => {
+    return (
+      <Form form={form} initialValues={{ label: getInitialLabelValue() }} onValuesChange={onValuesChange}>
+        <Form.Item name="label" label="Label">
+          <Input />
+        </Form.Item>
+      </Form>
+    );
+  };
+
+  const renderMultiDetail = () => {
+    return null;
+  };
+
+  const renderCanvasDetail = () => {
+    return <p>Select a node or edge :)</p>;
+  };
+
+  const { type } = props;
+
+  return (
+    <Card title={upperFirst(type)} bordered={false}>
+      {type === 'node' && renderNodeDetail()}
+      {type === 'edge' && renderEdgeDetail()}
+      {type === 'multi' && renderMultiDetail()}
+      {type === 'canvas' && renderCanvasDetail()}
+    </Card>
+  );
+};
+
+export const NodePanel = DetailPanel.create<PanelProps>('node')(Panel);
+export const EdgePanel = DetailPanel.create<PanelProps>('edge')(Panel);
+export const MultiPanel = DetailPanel.create<PanelProps>('multi')(Panel);
+export const CanvasPanel = DetailPanel.create<PanelProps>('canvas')(Panel);

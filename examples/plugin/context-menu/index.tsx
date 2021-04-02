@@ -1,6 +1,6 @@
-import React from 'react';
 import { Menu } from 'antd';
-import GGEditor, { Flow, ContextMenu } from 'gg-editor';
+import GGEditor, { ContextMenu, Flow } from 'gg-editor';
+import React from 'react';
 import styles from './index.less';
 
 const data = {
