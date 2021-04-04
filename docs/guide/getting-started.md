@@ -90,7 +90,7 @@ const data = {
 
 ```bash | pure
 # Clone the repository
-$ git clone https://github.com/alibaba/GGEditor.git
+$ git clone https://github.com/Infoset/GGEditor.git
 
 # Change directory
 $ cd gg-editor

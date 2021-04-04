@@ -10,22 +10,22 @@ export default defineConfig({
       null,
       {
         title: 'GitHub',
-        path: 'https://github.com/alibaba/GGEditor',
+        path: 'https://github.com/Infoset/GGEditor',
       },
       {
         title: 'Changelog',
-        path: 'https://github.com/alibaba/GGEditor/blob/master/CHANGELOG.md',
+        path: 'https://github.com/Infoset/GGEditor/blob/master/CHANGELOG.md',
       },
     ],
     'zh-CN': [
       null,
       {
         title: 'GitHub',
-        path: 'https://github.com/alibaba/GGEditor',
+        path: 'https://github.com/Infoset/GGEditor',
       },
       {
         title: '更新日志',
-        path: 'https://github.com/alibaba/GGEditor/blob/master/CHANGELOG.md',
+        path: 'https://github.com/Infoset/GGEditor/blob/master/CHANGELOG.md',
       },
     ],
   },

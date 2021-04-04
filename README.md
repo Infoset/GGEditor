@@ -6,7 +6,7 @@
 
 基于 [G6](https://github.com/antvis/g6) 和 [React](https://github.com/facebook/react) 的可视化图编辑器
 
-[![GitHub](https://img.shields.io/github/license/alibaba/GGEditor)](LICENSE)
+[![GitHub](https://img.shields.io/github/license/Infoset/GGEditor)](LICENSE)
 [![npm](https://img.shields.io/npm/v/gg-editor)](https://www.npmjs.com/package/gg-editor)
 [![npm](https://img.shields.io/npm/dm/gg-editor)](https://www.npmjs.com/package/gg-editor)
 
@@ -95,7 +95,7 @@ const data = {
 
 ```bash
 # 克隆仓库
-$ git clone https://github.com/alibaba/GGEditor.git
+$ git clone https://github.com/Infoset/GGEditor.git
 
 # 切换目录
 $ cd gg-editor
