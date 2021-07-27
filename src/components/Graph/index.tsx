@@ -1,30 +1,25 @@
-import React from 'react';
-import pick from 'lodash/pick';
-import { isMind } from '@/utils';
-import { track } from '@/helpers';
-import global from '@/common/global';
 import {
-  GraphType,
-  GraphCommonEvent,
-  GraphNodeEvent,
-  GraphEdgeEvent,
   GraphCanvasEvent,
+  GraphCommonEvent,
   GraphCustomEvent,
+  GraphEdgeEvent,
+  GraphNodeEvent,
 } from '@/common/constants';
 import {
-  Graph,
   FlowData,
-  MindData,
+  Graph,
   GraphNativeEvent,
   GraphReactEvent,
   GraphReactEventProps,
+  MindData,
 } from '@/common/interfaces';
 import { EditorPrivateContextProps, withEditorPrivateContext } from '@/components/EditorContext';
-
-import baseCommands from './command';
 import mindCommands from '@/components/Mind/command';
-
+import { isMind } from '@/utils';
+import pick from 'lodash/pick';
+import React from 'react';
 import './behavior';
+import baseCommands from './command';
 
 interface GraphProps extends Partial<GraphReactEventProps>, EditorPrivateContextProps {
   style?: React.CSSProperties;
@@ -98,13 +93,6 @@ class GraphComponent extends React.Component<GraphProps, GraphState> {
     Object.keys(commands).forEach(name => {
       commandManager.register(name, commands[name]);
     });
-
-    // 发送埋点
-    if (global.trackable) {
-      const graphType = isMind(this.graph) ? GraphType.Mind : GraphType.Flow;
-
-      track(graphType);
-    }
   }
 
   bindEvent() {
